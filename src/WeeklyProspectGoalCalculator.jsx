@@ -199,6 +199,7 @@ const STYLE = `
   border-radius: 16px;
   padding: 1.75rem;
   margin-bottom: 1.5rem;
+  overflow: hidden;
 }
 .wpg .ph {
   display: flex; align-items: center; justify-content: space-between;
