@@ -948,7 +948,7 @@ const STYLE = `
      PRINT — Birchstone investor-presentation polish.
      NO GREY: every text color is navy. Three navy weights only:
        #044160 primary navy (headings, key numbers, labels)
-       #1a4d70 body navy (paragraphs, captions, hints)
+       #044160 body navy (paragraphs, captions, hints)
        #b8c8d8 light-navy (borders, dividers)
        #eef3f7 pale-navy (subtle backgrounds)
 
@@ -963,18 +963,18 @@ const STYLE = `
       content: "Page " counter(page);
       font-family: "Montserrat", sans-serif;
       font-size: 8pt;
-      color: #1a4d70;
+      color: #044160;
     }
     @bottom-left {
       content: "Birchstone Residential";
       font-family: "Montserrat", sans-serif;
       font-size: 8pt;
-      color: #1a4d70;
+      color: #044160;
     }
   }
 
   /* Base reset */
-  .wpg { background: #fff !important; color: #1a4d70 !important; padding: 0 !important; }
+  .wpg { background: #fff !important; color: #044160 !important; padding: 0 !important; }
   .wpg .actions, .wpg .save-pip, .wpg .tabs, .wpg .sub { display: none !important; }
 
   /* Brand row — logo swap */
@@ -1020,8 +1020,8 @@ const STYLE = `
   }
   .wpg .prop-banner-name { color: #044160 !important; font-weight: 700; }
   .wpg .prop-banner-period,
-  .wpg .prop-banner-occ { color: #1a4d70 !important; }
-  .wpg .prop-banner-sep { color: #1a4d70 !important; }
+  .wpg .prop-banner-occ { color: #044160 !important; }
+  .wpg .prop-banner-sep { color: #044160 !important; }
 
   /* ─── CALCULATOR TAB PRINT — Page 1: hero + funnel · Page 2: recap + how it computes ─── */
 
@@ -1057,7 +1057,7 @@ const STYLE = `
     line-height: 1 !important; margin: 0.1rem 0 !important;
   }
   .wpg .hero .per {
-    color: #1a4d70 !important; font-size: 8.5pt !important;
+    color: #044160 !important; font-size: 8.5pt !important;
     margin-top: 0.15rem;
   }
   .wpg .hero .dt { color: #044160 !important; font-size: 7.5pt !important; }
@@ -1070,7 +1070,7 @@ const STYLE = `
   .wpg .hero .occ-strip .occ-now,
   .wpg .hero .occ-strip .occ-goal { color: #044160 !important; }
   .wpg .hero .occ-strip .occ-cap,
-  .wpg .hero .occ-strip .occ-arrow { color: #1a4d70 !important; }
+  .wpg .hero .occ-strip .occ-arrow { color: #044160 !important; }
 
   /* Hide the verdict box and exploration content on calculator print —
      the Action Plan PDF carries the actionable verdict and lever list */
@@ -1105,9 +1105,9 @@ const STYLE = `
     border-bottom: 1px solid #eef3f7;
   }
   .wpg .frow:last-of-type { border-bottom: none; }
-  .wpg .frow .flab { color: #1a4d70 !important; font-size: 9pt !important; }
+  .wpg .frow .flab { color: #044160 !important; font-size: 9pt !important; }
   .wpg .frow .fval { color: #044160 !important; font-size: 10pt !important; font-weight: 700; }
-  .wpg .frow .frate { color: #1a4d70 !important; font-size: 7.5pt !important; }
+  .wpg .frow .frate { color: #044160 !important; font-size: 7.5pt !important; }
   .wpg .stat {
     background: #fff !important;
     border: 1px solid #b8c8d8 !important;
@@ -1156,7 +1156,7 @@ const STYLE = `
     font-size: 9pt !important; line-height: 1.4;
     padding: 0.08rem 0;
   }
-  .wpg .rm-row span { color: #1a4d70 !important; }
+  .wpg .rm-row span { color: #044160 !important; }
   .wpg .rm-row b { color: #044160 !important; font-weight: 600; }
   /* KPI rows — fixed column widths so every row aligns identically */
   .wpg .rm-kpi-row {
@@ -1169,14 +1169,14 @@ const STYLE = `
   }
   .wpg .rm-kpi-row.miss .rm-kpi-status { color: #b91c1c !important; font-weight: 600; }
   .wpg .rm-kpi-row.ok .rm-kpi-status { color: #15803d !important; font-weight: 600; }
-  .wpg .rm-kpi-name { color: #1a4d70 !important; white-space: nowrap; }
+  .wpg .rm-kpi-name { color: #044160 !important; white-space: nowrap; }
   .wpg .rm-kpi-val {
     color: #044160 !important; font-weight: 700;
     font-variant-numeric: tabular-nums; white-space: nowrap;
     text-align: right;
   }
   .wpg .rm-kpi-bench {
-    color: #1a4d70 !important; font-variant-numeric: tabular-nums;
+    color: #044160 !important; font-variant-numeric: tabular-nums;
     white-space: nowrap; text-align: left;
   }
   .wpg .rm-kpi-status { white-space: nowrap; text-align: left; }
@@ -1186,7 +1186,7 @@ const STYLE = `
     background: #eef3f7 !important;
     border: 1px solid #b8c8d8 !important;
     border-left: 3px solid #044160 !important;
-    color: #1a4d70 !important;
+    color: #044160 !important;
     font-size: 8.5pt !important;
     line-height: 1.45 !important;
     padding: 0.55rem 0.8rem !important;
@@ -1250,7 +1250,7 @@ const STYLE = `
   .wpg .ph-num {
     background: #fff !important;
     border: 1px solid #b8c8d8 !important;
-    border-left: 3px solid #1a4d70 !important;
+    border-left: 3px solid #044160 !important;
     border-radius: 4px !important;
     padding: 0.55rem 0.75rem !important;
     page-break-inside: avoid;
@@ -1270,11 +1270,11 @@ const STYLE = `
     line-height: 1 !important; font-weight: 800;
   }
   .wpg .ph-num-val small {
-    color: #1a4d70 !important; font-size: 8pt !important;
+    color: #044160 !important; font-size: 8pt !important;
     font-weight: 500; margin-left: 0.3rem;
   }
   .wpg .ph-num-hint {
-    color: #1a4d70 !important; font-size: 7pt !important;
+    color: #044160 !important; font-size: 7pt !important;
     font-style: italic; margin-top: 0.15rem;
   }
 
@@ -1310,7 +1310,7 @@ const STYLE = `
   .wpg .plan-section-sub { display: none !important; }
   .wpg .plan-empty {
     background: transparent !important; border: 1px dashed #b8c8d8 !important;
-    color: #1a4d70 !important; font-size: 9pt !important;
+    color: #044160 !important; font-size: 9pt !important;
     padding: 0.45rem 0.6rem !important;
   }
 
@@ -1344,9 +1344,9 @@ const STYLE = `
     letter-spacing: 0.08em; margin-right: 0.18rem;
     text-transform: uppercase;
   }
-  .wpg .ic-from { color: #1a4d70 !important; font-size: 9.5pt !important; }
+  .wpg .ic-from { color: #044160 !important; font-size: 9.5pt !important; }
   .wpg .ic-to { color: #044160 !important; font-size: 10pt !important; font-weight: 700; }
-  .wpg .ic-arrow { color: #1a4d70 !important; }
+  .wpg .ic-arrow { color: #044160 !important; }
   .wpg .ic-delta {
     background: #eef3f7 !important; color: #044160 !important;
     font-size: 7.5pt !important; padding: 0.06rem 0.32rem !important;
@@ -1354,7 +1354,7 @@ const STYLE = `
 
   /* Benchmark reference under change strip */
   .wpg .ic-benchmark {
-    color: #1a4d70 !important;
+    color: #044160 !important;
     font-size: 8.5pt !important;
     margin: 0.1rem 0 0.25rem !important;
   }
@@ -1373,14 +1373,14 @@ const STYLE = `
     background: transparent !important;
     border: none !important;
     padding: 0.12rem 0 0 1rem !important;
-    color: #1a4d70 !important;
+    color: #044160 !important;
     font-size: 9pt !important;
     line-height: 1.4 !important;
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
     page-break-inside: avoid;
   }
-  .wpg .action-print i { color: #1a4d70 !important; font-style: italic; }
+  .wpg .action-print i { color: #044160 !important; font-style: italic; }
 
   /* Unchanged KPIs — clean text rows, no boxes, columns aligned across rows */
   .wpg .improve-card.unchanged-card {
@@ -1407,7 +1407,7 @@ const STYLE = `
     white-space: nowrap; text-align: right;
   }
   .wpg .uc-benchmark {
-    color: #1a4d70 !important; font-size: 8.5pt !important;
+    color: #044160 !important; font-size: 8.5pt !important;
     font-variant-numeric: tabular-nums;
     white-space: nowrap; text-align: left;
   }
@@ -1432,14 +1432,14 @@ const STYLE = `
     font-size: 9pt !important;
   }
   .wpg label { color: #044160 !important; font-size: 9pt !important; }
-  .wpg .hint { color: #1a4d70 !important; font-size: 8pt !important; }
-  .wpg .derived { color: #1a4d70 !important; font-size: 8.5pt !important; }
+  .wpg .hint { color: #044160 !important; font-size: 8pt !important; }
+  .wpg .derived { color: #044160 !important; font-size: 8.5pt !important; }
   .wpg .derived b { color: #044160 !important; }
   .wpg .lever input[type="range"] { display: none !important; }
   .wpg .btn-reset-sliders { display: none !important; }
   .wpg .miss .lab { color: #044160 !important; font-size: 8pt !important; }
-  .wpg .miss li { color: #1a4d70 !important; font-size: 9pt !important; }
-  .wpg .miss li .meta { color: #1a4d70 !important; font-size: 8pt !important; }
+  .wpg .miss li { color: #044160 !important; font-size: 9pt !important; }
+  .wpg .miss li .meta { color: #044160 !important; font-size: 8pt !important; }
   .wpg .miss li .pip { background: #b91c1c !important; }
   .wpg .bar { background: #eef3f7 !important; }
   .wpg .bar > span { background: #044160 !important; }
@@ -1451,7 +1451,7 @@ const STYLE = `
 }
 
 /* ── Mobile ── */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   /* Page padding — recover viewport space */
   .wpg { padding: 1rem 0.875rem 2rem; }
 
@@ -1552,7 +1552,7 @@ const STYLE = `
   .wpg .note { padding: 1rem; font-size: 0.85rem; }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   /* Extra-tight phones */
   .wpg { padding: 0.875rem 0.7rem 2rem; }
   .wpg h1 { font-size: 1.2rem; }
@@ -1802,7 +1802,12 @@ export default function WeeklyProspectGoalCalculator() {
   };
 
   const handleDownloadPDF = () => {
+    const originalTitle = document.title;
+    const propName = (propertyName || "Property").replace(/[^a-zA-Z0-9]+/g, "_");
+    const docName = activeTab === "calculator" ? "Calculator_Inputs" : "Action_Plan";
+    document.title = `Birchstone_WPG_${docName}_${propName}`;
     window.print();
+    setTimeout(() => { document.title = originalTitle; }, 1000);
   };
 
   const r = useMemo(() => {
@@ -1903,7 +1908,9 @@ export default function WeeklyProspectGoalCalculator() {
               </span>
             )}
             <button className="btn secondary" onClick={handleReset}>↻ Reset</button>
-            <button className="btn primary" onClick={handleDownloadPDF}>📄 Download PDF</button>
+            <button className="btn primary" onClick={handleDownloadPDF}>
+              📄 Download {activeTab === "calculator" ? "Calculator" : "Action Plan"} PDF
+            </button>
           </div>
         </div>
 
@@ -1971,14 +1978,14 @@ export default function WeeklyProspectGoalCalculator() {
               <div className="ph"><h2>Move-Out Forecast</h2><span className="tag">During the Window</span></div>
               <div className="subhead" style={{ marginTop: 0, paddingTop: 0, borderTop: 0 }}>Known</div>
               <div className="row2">
-                <Field label="Notices to Vacate" hint="NTVs without a future lease signed" value={notices} set={setNotices} min={0} />
+                <Field label="NTV Available" hint="notices to vacate without a future lease signed" value={notices} set={setNotices} min={0} />
                 <Field label="Under Eviction but not on NTV" hint="currently being processed" value={eviction} set={setEviction} min={0} />
               </div>
               <div className="subhead">Estimated</div>
-              <Field label="Avg Skips + Evictions / Month" hint="monthly average of unplanned move-outs" value={monthlySkips} set={setMonthlySkips} step={0.1} min={0} />
+              <Field label="Skips Last 30-Days" hint="unplanned move-outs in the last 30 days" value={monthlySkips} set={setMonthlySkips} step={0.1} min={0} />
               <div className="row2">
                 <Field label="Remaining Expirations" hint="leases ending in this window without a renewal decision yet" value={remainingExp} set={setRemainingExp} min={0} />
-                <Field label="Renewal %" hint="% of expiring leases that renew" value={renewalRate} set={setRenewalRate} step={0.1} min={0} max={100} />
+                <Field label="Avg Net Renewal %" hint="% of expiring leases that renew (excludes MTM)" value={renewalRate} set={setRenewalRate} step={0.1} min={0} max={100} />
               </div>
               <div className="derived">
                 <span>Known {f0(r.known)} + potential skips/evictions {f0(r.skipsEst)} + potential renewals vacating {f0(r.expirationLoss)}</span>
@@ -1989,7 +1996,7 @@ export default function WeeklyProspectGoalCalculator() {
             <div className="panel">
               <div className="ph"><h2>Current Availability</h2></div>
               <div className="row2">
-                <Field label="Unrented Vacant Units" hint="Ready and Not Ready · no future lease signed" value={vacant} set={setVacant} min={0} />
+                <Field label="Vacant Available" hint="ready and not ready · no future lease signed" value={vacant} set={setVacant} min={0} />
                 <Field label="Leased Past Move-In Date" hint="signed lease, resident hasn't moved in yet" value={pastMoveIn} set={setPastMoveIn} min={0} />
               </div>
               <div className="derived">
@@ -2008,7 +2015,7 @@ export default function WeeklyProspectGoalCalculator() {
                 <Field label="Denial Rate" hint="% of completed apps denied" value={denial} set={setDenial} step={0.1} min={0} max={100} />
                 <Field label="Cancellation Rate" hint="% of completed apps cancelled" value={cancel} set={setCancel} step={0.1} min={0} max={100} />
               </div>
-              <Field label="Current Average New Prospects a Week" hint="avg traffic you generate now" value={curWeekly} set={setCurWeekly} min={0} />
+              <Field label="Average New Prospects a Week" hint="avg traffic you generate now" value={curWeekly} set={setCurWeekly} min={0} />
             </div>
           </div>
 
@@ -2321,13 +2328,13 @@ export default function WeeklyProspectGoalCalculator() {
             </div>
             <div className="rm-col">
               <div className="rm-col-lab">Move-Out Forecast Inputs</div>
-              <div className="rm-row"><span>Notices to Vacate</span><b>{num(notices)}</b></div>
+              <div className="rm-row"><span>NTV Available</span><b>{num(notices)}</b></div>
               <div className="rm-row"><span>Under Eviction (not on NTV)</span><b>{num(eviction)}</b></div>
-              <div className="rm-row"><span>Monthly Skips + Evictions Avg</span><b>{num(monthlySkips)}</b></div>
+              <div className="rm-row"><span>Skips Last 30-Days</span><b>{num(monthlySkips)}</b></div>
               <div className="rm-row"><span>Remaining Expirations</span><b>{num(remainingExp)}</b></div>
-              <div className="rm-row"><span>Renewal % Used</span><b>{num(renewalRate)}%</b></div>
+              <div className="rm-row"><span>Avg Net Renewal %</span><b>{num(renewalRate)}%</b></div>
               <div className="rm-col-lab" style={{ marginTop: "0.6rem" }}>Current Availability</div>
-              <div className="rm-row"><span>Unrented Vacant</span><b>{num(vacant)}</b></div>
+              <div className="rm-row"><span>Vacant Available</span><b>{num(vacant)}</b></div>
               <div className="rm-row"><span>Leased Past Move-In</span><b>{num(pastMoveIn)}</b></div>
             </div>
             <div className="rm-col rm-kpi">
@@ -2350,7 +2357,7 @@ export default function WeeklyProspectGoalCalculator() {
                 );
               })}
               <div className="rm-kpi-row" style={{ marginTop: "0.4rem" }}>
-                <span className="rm-kpi-name">Current Avg Prospects</span>
+                <span className="rm-kpi-name">Avg New Prospects</span>
                 <span className="rm-kpi-val">{num(curWeekly)} a week</span>
                 <span className="rm-kpi-bench" />
                 <span className="rm-kpi-status" />
@@ -2365,16 +2372,16 @@ export default function WeeklyProspectGoalCalculator() {
             the period:
           </p>
           <ul>
-            <li><b>Known move-outs:</b> notices to vacate plus residents currently in eviction.</li>
-            <li><b>Estimated unplanned move-outs:</b> your monthly skip and eviction average,
+            <li><b>Known move-outs:</b> NTV Available plus residents currently in eviction.</li>
+            <li><b>Estimated unplanned move-outs:</b> your Skips Last 30-Days,
               multiplied by the number of months in the window.</li>
             <li><b>Estimated non-renewals:</b> the leases expiring in the window, multiplied by
-              the share that historically don't renew. So with 25 expirations and a 40% renewal
-              rate, 60% don't renew — that's 15 move-outs.</li>
+              the share that historically don't renew. So with 25 expirations and a 40% net
+              renewal rate, 60% don't renew — that's 15 move-outs.</li>
           </ul>
           <p>
             Past early move-outs are intentionally excluded — those residents are already gone.
-            <b> Total Exposure</b> = unrented vacant + leased past move-in + Move-Out Forecast.
+            <b> Total Exposure</b> = Vacant Available + Leased Past Move-In + Move-Out Forecast.
             <b> Leases Needed</b> = Total Exposure minus the vacancy budget allowed at your
             occupancy goal. The funnel then grosses up backward through your pooled conversion
             rates to land on a weekly prospect target.
@@ -2386,7 +2393,7 @@ export default function WeeklyProspectGoalCalculator() {
             goal minus lead-to-lease days), not the full horizon.
           </p>
           <p>
-            <b>Note on renewals:</b> the renewal percentage treats month-to-month residents as
+            <b>Note on renewals:</b> Avg Net Renewal % treats month-to-month residents as
             non-renewals, which is intentional — MTMs carry real move-out risk (unknown
             timeline, short notice in many states).
           </p>
