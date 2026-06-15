@@ -841,7 +841,13 @@ const STYLE = `
   text-align: left;
 }
 .wpg .uc-status.ok { color: #2cb1cc; }
-.wpg .uc-status.miss { color: #fca5a5; }
+.wpg .uc-status.miss {
+  color: #fca5a5;
+  /* Neutralize the unrelated .wpg .miss callout block styling */
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
 .wpg .uc-toggle {
   color: #2cb1cc; font-size: 1.3rem; font-weight: 700;
   width: 28px; height: 28px; display: flex; align-items: center;
@@ -974,6 +980,15 @@ const STYLE = `
      TYPOGRAPHY — single hierarchy, tight spacing.
        Display 24-32pt · H1 16pt · H2 11pt · Body 9.5pt · Small 8pt
      ───────────────────────────────────────────────────────────── */
+
+  /* Force browsers to print colors EXACTLY as specified — without this,
+     browser print "economy mode" dims all text/backgrounds, making
+     navy look gray and washing out everything */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
 
   @page {
     size: letter;
@@ -1453,7 +1468,14 @@ const STYLE = `
     grid-area: auto !important; grid-column: auto !important; grid-row: auto !important;
   }
   .wpg .improve-card.unchanged-card .uc-status.ok { color: #15803d !important; }
-  .wpg .improve-card.unchanged-card .uc-status.miss { color: #b91c1c !important; }
+  .wpg .improve-card.unchanged-card .uc-status.miss {
+    color: #b91c1c !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+  /* Hide the required-field asterisk in print */
+  .wpg .req { display: none !important; }
   /* Show notes if present — kill the screen border-top */
   .wpg .improve-card.unchanged-card .uc-body {
     display: block !important;
@@ -1655,45 +1677,45 @@ function Field({ label, hint, value, set, step = 1, type = "number", min, max, r
 export default function WeeklyProspectGoalCalculator() {
   // Identity & goal
   const [propertyName, setPropertyName] = useState("");
-  const [units, setUnits] = useState(300);
-  const [staffCount, setStaffCount] = useState(3);
+  const [units, setUnits] = useState("");
+  const [staffCount, setStaffCount] = useState("");
   const [goal, setGoal] = useState(95);
-  const [horizon, setHorizon] = useState(90);
+  const [horizon, setHorizon] = useState("");
   const [leadToLease, setLeadToLease] = useState(30);
   const [today, setToday] = useState(() => new Date().toISOString().split("T")[0]);
 
   // Current vacancy
-  const [vacant, setVacant] = useState(8);
-  const [pastMoveIn, setPastMoveIn] = useState(1);
+  const [vacant, setVacant] = useState("");
+  const [pastMoveIn, setPastMoveIn] = useState("");
 
   // Move-Out Forecast — Known + Estimated
-  const [notices, setNotices] = useState(15);
-  const [eviction, setEviction] = useState(3);
-  const [monthlySkips, setMonthlySkips] = useState(2);
-  const [remainingExp, setRemainingExp] = useState(25);
-  const [renewalRate, setRenewalRate] = useState(40);
+  const [notices, setNotices] = useState("");
+  const [eviction, setEviction] = useState("");
+  const [monthlySkips, setMonthlySkips] = useState("");
+  const [remainingExp, setRemainingExp] = useState("");
+  const [renewalRate, setRenewalRate] = useState("");
 
   // Conversion funnel
-  const [p2t, setP2t] = useState(35);
-  const [t2a, setT2a] = useState(38);
-  const [denial, setDenial] = useState(10);
-  const [cancel, setCancel] = useState(10);
+  const [p2t, setP2t] = useState("");
+  const [t2a, setT2a] = useState("");
+  const [denial, setDenial] = useState("");
+  const [cancel, setCancel] = useState("");
 
   // Current generation
-  const [curWeekly, setCurWeekly] = useState(25);
+  const [curWeekly, setCurWeekly] = useState("");
 
   // Operator-reported current occupancy — used as a sanity check, not in core math.
   // The calculator computes "implied" occupancy from vacancy inputs and reconciles.
-  const [currentOccupancy, setCurrentOccupancy] = useState(92.3);
+  const [currentOccupancy, setCurrentOccupancy] = useState("");
 
   // Lever sliders — exploration overlay; drive results but never touch input fields.
   // Each slider has a "touched" flag: untouched sliders auto-track their input field,
   // touched sliders stay where the operator left them until Reset.
-  const [p2tSlider, setP2tSlider]         = useState(35);
-  const [t2aSlider, setT2aSlider]         = useState(38);
-  const [denialSlider, setDenialSlider]   = useState(10);
-  const [cancelSlider, setCancelSlider]   = useState(10);
-  const [renewalSlider, setRenewalSlider] = useState(40);
+  const [p2tSlider, setP2tSlider]         = useState(0);
+  const [t2aSlider, setT2aSlider]         = useState(0);
+  const [denialSlider, setDenialSlider]   = useState(0);
+  const [cancelSlider, setCancelSlider]   = useState(0);
+  const [renewalSlider, setRenewalSlider] = useState(0);
   const [p2tTouched, setP2tTouched]         = useState(false);
   const [t2aTouched, setT2aTouched]         = useState(false);
   const [denialTouched, setDenialTouched]   = useState(false);
@@ -1720,13 +1742,13 @@ export default function WeeklyProspectGoalCalculator() {
   const saveTimer = useRef(null);
 
   const DEFAULTS = {
-    propertyName: "", units: 300, staffCount: 3, goal: 95, horizon: 90, leadToLease: 30,
+    propertyName: "", units: "", staffCount: "", goal: 95, horizon: "", leadToLease: 30,
     today: new Date().toISOString().split("T")[0],
-    vacant: 8, pastMoveIn: 1, notices: 15, eviction: 3, monthlySkips: 2,
-    remainingExp: 25, renewalRate: 40,
-    p2t: 35, t2a: 38, denial: 10, cancel: 10, curWeekly: 25,
-    currentOccupancy: 92.3,
-    p2tSlider: 35, t2aSlider: 38, denialSlider: 10, cancelSlider: 10, renewalSlider: 40,
+    vacant: "", pastMoveIn: "", notices: "", eviction: "", monthlySkips: "",
+    remainingExp: "", renewalRate: "",
+    p2t: "", t2a: "", denial: "", cancel: "", curWeekly: "",
+    currentOccupancy: "",
+    p2tSlider: 0, t2aSlider: 0, denialSlider: 0, cancelSlider: 0, renewalSlider: 0,
     p2tTouched: false, t2aTouched: false, denialTouched: false, cancelTouched: false, renewalTouched: false,
     activeTab: "calculator",
     preparedBy: "",
@@ -2566,17 +2588,20 @@ export default function WeeklyProspectGoalCalculator() {
           const targetW = trafficTarget;
           let feasibility = null;
           if (targetW != null) {
+            // Round subtractions to 1 decimal to avoid floating-point noise (e.g. 9.4 not 9.399999...)
+            const surplus = Math.round((cw - targetW) * 10) / 10;
+            const shortfall = Math.round((targetW - cw) * 10) / 10;
             if (targetW <= cw) {
               feasibility = (
                 <span className="feas ok">
                   ✓ Target of <b>{targetW} a week</b> is at or below your current <b>{cw} a week</b> average —
-                  achievable without generating additional traffic. Surplus of {cw - targetW} a week.
+                  achievable without generating additional traffic. Surplus of {surplus} a week.
                 </span>
               );
             } else if (targetW <= r.weeklyCapacity) {
               feasibility = (
                 <span className="feas warn">
-                  Target of <b>{targetW} a week</b> is <b>{targetW - cw} a week above</b> your current <b>{cw} a week</b> average.
+                  Target of <b>{targetW} a week</b> is <b>{shortfall} a week above</b> your current <b>{cw} a week</b> average.
                   Your team will need to generate more new prospects each week to reach this goal.
                 </span>
               );
