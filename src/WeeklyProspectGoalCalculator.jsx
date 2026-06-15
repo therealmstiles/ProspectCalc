@@ -1099,6 +1099,7 @@ const STYLE = `
     color: #044160 !important; font-size: 8.5pt !important;
     margin-top: 0.15rem; font-weight: 600;
   }
+  .wpg .hero .per b { color: #044160 !important; font-weight: 700 !important; }
   .wpg .hero .dt { color: #044160 !important; font-size: 7.5pt !important; }
   .wpg .hero .dv { color: #044160 !important; font-size: 9.5pt !important; font-weight: 700; }
   .wpg .hero .occ-strip {
