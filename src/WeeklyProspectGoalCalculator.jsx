@@ -806,12 +806,12 @@ const STYLE = `
 .wpg .ic-benchmark .ok { color: #2cb1cc; }
 .wpg .ic-benchmark .miss { color: #fca5a5; }
 
-/* Unchanged row: 5-column grid — name fills, others auto-size to content */
+/* Unchanged row: flexbox single line — name flexes, others have min-widths */
 .wpg .uc-row {
-  display: grid !important;
-  grid-template-columns: 1fr auto auto auto 28px !important;
-  gap: 1rem !important;
+  display: flex !important;
   align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: 0.85rem !important;
   width: 100%;
   background: transparent; border: none;
   padding: 0.9rem 1.25rem;
@@ -820,24 +820,32 @@ const STYLE = `
 }
 .wpg .uc-row:hover { background: rgba(44,177,204,0.05); }
 .wpg .uc-name {
+  flex: 1 1 auto; min-width: 0;
   font-weight: 600; font-size: 0.95rem;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .wpg .uc-val {
+  flex: 0 0 auto;
   color: rgba(255,255,255,0.85); font-weight: 700;
   font-size: 0.95rem; font-variant-numeric: tabular-nums;
-  text-align: right; white-space: nowrap;
+  text-align: right; white-space: nowrap; min-width: 55px;
 }
 .wpg .uc-benchmark {
+  flex: 0 0 auto;
   color: rgba(255,255,255,0.55); font-size: 0.82rem;
   font-variant-numeric: tabular-nums; white-space: nowrap;
+  min-width: 110px;
 }
 .wpg .uc-status {
+  flex: 0 0 auto;
   font-size: 0.82rem; font-weight: 600;
   font-variant-numeric: tabular-nums; white-space: nowrap;
+  min-width: 110px;
 }
 .wpg .uc-status.ok { color: #2cb1cc; }
 .wpg .uc-status.miss { color: #fca5a5; }
 .wpg .uc-toggle {
+  flex: 0 0 auto;
   color: #2cb1cc; font-size: 1.3rem; font-weight: 700;
   width: 24px; height: 24px; display: flex; align-items: center;
   justify-content: center; border: 1px solid rgba(44,177,204,0.3);
@@ -886,6 +894,21 @@ const STYLE = `
 }
 .wpg .prepared-by-input::placeholder { color: rgba(255,255,255,0.35); text-transform: none; }
 .wpg .prepared-by-print { display: none; }
+
+/* Required field markers */
+.wpg .req {
+  color: #fca5a5; font-weight: 700;
+  margin-left: 0.15rem;
+  letter-spacing: normal;
+}
+.wpg .field-missing input,
+.wpg input.field-missing {
+  border-color: rgba(252, 165, 165, 0.5) !important;
+}
+.wpg .field-missing input:focus,
+.wpg input.field-missing:focus {
+  border-color: rgba(252, 165, 165, 0.9) !important;
+}
 
 /* Signatures block — rendered always but only shown on print via media query */
 .wpg .signatures { display: none; }
@@ -1019,7 +1042,7 @@ const STYLE = `
   }
   .wpg .prop-banner-name { color: #044160 !important; font-weight: 700; }
   .wpg .prop-banner-period,
-  .wpg .prop-banner-occ { color: #044160 !important; font-weight: 500; }
+  .wpg .prop-banner-occ { color: #044160 !important; font-weight: 600; }
   .wpg .prop-banner-sep { color: #044160 !important; }
 
   /* ─── CALCULATOR TAB PRINT — Page 1: hero + funnel · Page 2: recap + how it computes ─── */
@@ -1057,7 +1080,7 @@ const STYLE = `
   }
   .wpg .hero .per {
     color: #044160 !important; font-size: 8.5pt !important;
-    margin-top: 0.15rem; font-weight: 500;
+    margin-top: 0.15rem; font-weight: 600;
   }
   .wpg .hero .dt { color: #044160 !important; font-size: 7.5pt !important; }
   .wpg .hero .dv { color: #044160 !important; font-size: 9.5pt !important; font-weight: 700; }
@@ -1069,7 +1092,7 @@ const STYLE = `
   .wpg .hero .occ-strip .occ-now,
   .wpg .hero .occ-strip .occ-goal { color: #044160 !important; }
   .wpg .hero .occ-strip .occ-cap,
-  .wpg .hero .occ-strip .occ-arrow { color: #044160 !important; font-weight: 500; }
+  .wpg .hero .occ-strip .occ-arrow { color: #044160 !important; font-weight: 600; }
 
   /* Hide the verdict box and exploration content on calculator print —
      the Action Plan PDF carries the actionable verdict and lever list */
@@ -1104,9 +1127,9 @@ const STYLE = `
     border-bottom: 1px solid #eef3f7;
   }
   .wpg .frow:last-of-type { border-bottom: none; }
-  .wpg .frow .flab { color: #044160 !important; font-size: 9pt !important; font-weight: 500; }
+  .wpg .frow .flab { color: #044160 !important; font-size: 9pt !important; font-weight: 600; }
   .wpg .frow .fval { color: #044160 !important; font-size: 10pt !important; font-weight: 700; }
-  .wpg .frow .frate { color: #044160 !important; font-size: 7.5pt !important; font-weight: 500; }
+  .wpg .frow .frate { color: #044160 !important; font-size: 7.5pt !important; font-weight: 600; }
   .wpg .stat {
     background: #fff !important;
     border: 1px solid #b8c8d8 !important;
@@ -1155,7 +1178,7 @@ const STYLE = `
     font-size: 9pt !important; line-height: 1.4;
     padding: 0.08rem 0;
   }
-  .wpg .rm-row span { color: #044160 !important; font-weight: 500; }
+  .wpg .rm-row span { color: #044160 !important; font-weight: 600; }
   .wpg .rm-row b { color: #044160 !important; font-weight: 600; }
   /* KPI rows — fixed column widths so every row aligns identically */
   .wpg .rm-kpi-row {
@@ -1168,7 +1191,7 @@ const STYLE = `
   }
   .wpg .rm-kpi-row.miss .rm-kpi-status { color: #b91c1c !important; font-weight: 600; }
   .wpg .rm-kpi-row.ok .rm-kpi-status { color: #15803d !important; font-weight: 600; }
-  .wpg .rm-kpi-name { color: #044160 !important; white-space: nowrap; font-weight: 500; }
+  .wpg .rm-kpi-name { color: #044160 !important; white-space: nowrap; font-weight: 600; }
   .wpg .rm-kpi-val {
     color: #044160 !important; font-weight: 700;
     font-variant-numeric: tabular-nums; white-space: nowrap;
@@ -1176,7 +1199,7 @@ const STYLE = `
   }
   .wpg .rm-kpi-bench {
     color: #044160 !important; font-variant-numeric: tabular-nums;
-    white-space: nowrap; text-align: left; font-weight: 500;
+    white-space: nowrap; text-align: left; font-weight: 600;
   }
   .wpg .rm-kpi-status { white-space: nowrap; text-align: left; }
 
@@ -1192,7 +1215,7 @@ const STYLE = `
     margin: 0.5rem 0 0 !important;
     page-break-inside: avoid;
     border-radius: 4px !important;
-    font-weight: 500;
+    font-weight: 600;
   }
   .wpg .note b { color: #044160 !important; }
   .wpg .note p { margin: 0 0 0.3rem !important; }
@@ -1275,7 +1298,7 @@ const STYLE = `
   }
   .wpg .ph-num-hint {
     color: #044160 !important; font-size: 7pt !important;
-    font-style: italic; margin-top: 0.15rem; font-weight: 500;
+    font-style: italic; margin-top: 0.15rem; font-weight: 600;
   }
 
   /* Feasibility verdict — plain text, no box */
@@ -1318,11 +1341,14 @@ const STYLE = `
   .wpg .improve-card {
     background: transparent !important;
     border: none !important;
-    border-top: 1px solid #b8c8d8 !important;
-    padding: 0.35rem 0 !important;
+    border-top: none !important;
+    padding: 0.5rem 0 !important;
     margin: 0 !important;
     page-break-inside: avoid;
     counter-increment: imp-num;
+  }
+  .wpg .improve-card + .improve-card {
+    border-top: 1px solid #eef3f7 !important;
   }
   .wpg .improve-card.committed-card { border-left: none !important; }
   .wpg .improve-card .ic-head {
@@ -1344,9 +1370,9 @@ const STYLE = `
     letter-spacing: 0.08em; margin-right: 0.18rem;
     text-transform: uppercase;
   }
-  .wpg .ic-from { color: #044160 !important; font-size: 9.5pt !important; font-weight: 500; }
+  .wpg .ic-from { color: #044160 !important; font-size: 9.5pt !important; font-weight: 600; }
   .wpg .ic-to { color: #044160 !important; font-size: 10pt !important; font-weight: 700; }
-  .wpg .ic-arrow { color: #044160 !important; font-weight: 500; }
+  .wpg .ic-arrow { color: #044160 !important; font-weight: 600; }
   .wpg .ic-delta {
     background: #eef3f7 !important; color: #044160 !important;
     font-size: 7.5pt !important; padding: 0.06rem 0.32rem !important;
@@ -1357,7 +1383,7 @@ const STYLE = `
     color: #044160 !important;
     font-size: 8.5pt !important;
     margin: 0.1rem 0 0.25rem !important;
-    font-weight: 500;
+    font-weight: 600;
   }
   .wpg .ic-benchmark b { color: #044160 !important; }
   .wpg .ic-benchmark .ok { color: #15803d !important; font-weight: 600; }
@@ -1380,7 +1406,7 @@ const STYLE = `
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
     page-break-inside: avoid;
-    font-weight: 500;
+    font-weight: 600;
   }
   .wpg .action-print i { color: #044160 !important; font-style: italic; }
 
@@ -1389,49 +1415,54 @@ const STYLE = `
     background: transparent !important;
     border: none !important;
     border-top: none !important;
-    padding: 0.18rem 0 !important;
+    padding: 0.22rem 0 !important;
     margin: 0 !important;
     counter-increment: none;
   }
   .wpg .improve-card.unchanged-card .ic-title::before { content: none; }
   .wpg .uc-toggle { display: none !important; }
-  .wpg .uc-row {
+  /* High-specificity rule guarantees override of the screen .uc-row !important */
+  .wpg .improve-card.unchanged-card .uc-row {
     padding: 0 !important; background: transparent !important;
     display: grid !important;
     grid-template-columns: 1fr 55px 110px 130px !important;
     grid-template-areas: none !important;
+    grid-template-rows: auto !important;
     gap: 0.8rem !important;
     align-items: center !important;
-    width: 100%;
+    width: 100% !important;
+    text-decoration: none !important;
   }
-  .wpg .uc-name {
-    color: #044160 !important; font-size: 9.5pt !important; font-weight: 600;
-    grid-area: auto !important;
+  .wpg .improve-card.unchanged-card .uc-name {
+    color: #044160 !important; font-size: 9.5pt !important; font-weight: 600 !important;
+    grid-area: auto !important; grid-column: auto !important; grid-row: auto !important;
   }
-  .wpg .uc-val {
+  .wpg .improve-card.unchanged-card .uc-val {
     color: #044160 !important; font-size: 9.5pt !important;
-    font-weight: 700; font-variant-numeric: tabular-nums;
+    font-weight: 700 !important; font-variant-numeric: tabular-nums;
     white-space: nowrap; text-align: right;
-    grid-area: auto !important;
+    grid-area: auto !important; grid-column: auto !important; grid-row: auto !important;
   }
-  .wpg .uc-benchmark {
-    color: #044160 !important; font-size: 8.5pt !important; font-weight: 500;
+  .wpg .improve-card.unchanged-card .uc-benchmark {
+    color: #044160 !important; font-size: 8.5pt !important; font-weight: 600 !important;
     font-variant-numeric: tabular-nums;
     white-space: nowrap; text-align: left;
-    grid-area: auto !important;
+    grid-area: auto !important; grid-column: auto !important; grid-row: auto !important;
   }
-  .wpg .uc-status {
-    font-size: 8.5pt !important; font-weight: 600;
+  .wpg .improve-card.unchanged-card .uc-status {
+    font-size: 8.5pt !important; font-weight: 700 !important;
     font-variant-numeric: tabular-nums;
     white-space: nowrap; text-align: left;
-    grid-area: auto !important;
+    grid-area: auto !important; grid-column: auto !important; grid-row: auto !important;
   }
-  .wpg .uc-status.ok { color: #15803d !important; }
-  .wpg .uc-status.miss { color: #b91c1c !important; }
-  /* Show notes if present */
+  .wpg .improve-card.unchanged-card .uc-status.ok { color: #15803d !important; }
+  .wpg .improve-card.unchanged-card .uc-status.miss { color: #b91c1c !important; }
+  /* Show notes if present — kill the screen border-top */
   .wpg .improve-card.unchanged-card .uc-body {
     display: block !important;
     padding: 0.15rem 0 0 !important;
+    border-top: none !important;
+    background: transparent !important;
   }
 
   /* Catch-all: hide screen-only items */
@@ -1442,14 +1473,14 @@ const STYLE = `
     font-size: 9pt !important;
   }
   .wpg label { color: #044160 !important; font-size: 9pt !important; }
-  .wpg .hint { color: #044160 !important; font-size: 8pt !important; font-weight: 500; }
-  .wpg .derived { color: #044160 !important; font-size: 8.5pt !important; font-weight: 500; }
+  .wpg .hint { color: #044160 !important; font-size: 8pt !important; font-weight: 600; }
+  .wpg .derived { color: #044160 !important; font-size: 8.5pt !important; font-weight: 600; }
   .wpg .derived b { color: #044160 !important; }
   .wpg .lever input[type="range"] { display: none !important; }
   .wpg .btn-reset-sliders { display: none !important; }
   .wpg .miss .lab { color: #044160 !important; font-size: 8pt !important; font-weight: 600; }
-  .wpg .miss li { color: #044160 !important; font-size: 9pt !important; font-weight: 500; }
-  .wpg .miss li .meta { color: #044160 !important; font-size: 8pt !important; font-weight: 500; }
+  .wpg .miss li { color: #044160 !important; font-size: 9pt !important; font-weight: 600; }
+  .wpg .miss li .meta { color: #044160 !important; font-size: 8pt !important; font-weight: 600; }
   .wpg .miss li .pip { background: #b91c1c !important; }
   .wpg .bar { background: #eef3f7 !important; }
   .wpg .bar > span { background: #044160 !important; }
@@ -1539,21 +1570,25 @@ const STYLE = `
   }
   .wpg .ic-change { flex-wrap: wrap; gap: 0.4rem; }
 
-  /* Unchanged KPI row — 2 visual rows on mobile */
+  /* Unchanged KPI row — stay on one line at all widths (name truncates if needed) */
   .wpg .improve-card.unchanged-card .uc-row {
-    grid-template-columns: 1fr auto 28px !important;
-    grid-template-areas:
-      "name val toggle"
-      "bench status status" !important;
-    gap: 0.3rem 0.75rem !important;
+    gap: 0.5rem !important;
     padding: 0.75rem 0.9rem !important;
-    align-items: center !important;
+    flex-wrap: nowrap !important;
   }
-  .wpg .uc-name { grid-area: name; }
-  .wpg .uc-val { grid-area: val; }
-  .wpg .uc-toggle { grid-area: toggle; }
-  .wpg .uc-benchmark { grid-area: bench; font-size: 0.78rem; }
-  .wpg .uc-status { grid-area: status; font-size: 0.78rem; }
+  .wpg .improve-card.unchanged-card .uc-name {
+    font-size: 0.88rem !important;
+    min-width: 0 !important;
+  }
+  .wpg .improve-card.unchanged-card .uc-val {
+    min-width: 50px !important; font-size: 0.88rem !important;
+  }
+  .wpg .improve-card.unchanged-card .uc-benchmark {
+    min-width: 90px !important; font-size: 0.76rem !important;
+  }
+  .wpg .improve-card.unchanged-card .uc-status {
+    min-width: 100px !important; font-size: 0.76rem !important;
+  }
 
   /* Action items textarea */
   .wpg .action-input { min-height: 80px; font-size: 16px; }
@@ -1588,11 +1623,12 @@ const ceil = (v) => Math.ceil(num(v) - 1e-9);
 const fmtDate = (d) =>
   d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric" });
 
-function Field({ label, hint, value, set, step = 1, type = "number", min, max }) {
+function Field({ label, hint, value, set, step = 1, type = "number", min, max, required = false }) {
+  const isEmpty = value === "" || value === null || value === undefined;
   return (
-    <div className="field">
+    <div className={`field ${required && isEmpty ? "field-missing" : ""}`}>
       <label>
-        {label} {hint && <span className="hint">— {hint}</span>}
+        {label}{required && <span className="req">*</span>} {hint && <span className="hint">— {hint}</span>}
       </label>
       <input
         type={type}
@@ -1600,6 +1636,7 @@ function Field({ label, hint, value, set, step = 1, type = "number", min, max })
         min={min}
         max={max}
         value={value}
+        required={required}
         onChange={(e) => {
           const v = e.target.value;
           if (type !== "number") { set(v); return; }
@@ -1812,6 +1849,35 @@ export default function WeeklyProspectGoalCalculator() {
   };
 
   const handleDownloadPDF = () => {
+    // Check for required fields
+    const requiredFields = [
+      { value: propertyName, name: "Property Name" },
+      { value: preparedBy, name: "Prepared By (on Summary & Action Plan tab)" },
+      { value: units, name: "Total Units" },
+      { value: staffCount, name: "Current # of Office Staff" },
+      { value: horizon, name: "Days to Goal" },
+      { value: leadToLease, name: "Lead-to-Lease" },
+      { value: today, name: "Today's Date" },
+      { value: notices, name: "NTV Available" },
+      { value: eviction, name: "Under Eviction" },
+      { value: monthlySkips, name: "Skips Last 30-Days" },
+      { value: remainingExp, name: "Remaining Expirations" },
+      { value: renewalRate, name: "Avg Net Renewal %" },
+      { value: vacant, name: "Vacant Available" },
+      { value: pastMoveIn, name: "Leased Past Move-In" },
+      { value: p2t, name: "Prospect → Tour" },
+      { value: t2a, name: "Tour → Completed App" },
+      { value: denial, name: "Denial Rate" },
+      { value: cancel, name: "Cancellation Rate" },
+      { value: curWeekly, name: "Average New Prospects a Week" },
+    ];
+    const missing = requiredFields
+      .filter(f => f.value === "" || f.value === null || f.value === undefined || (typeof f.value === "string" && f.value.trim() === ""))
+      .map(f => f.name);
+    if (missing.length) {
+      alert(`Please fill in all required fields before downloading:\n\n• ${missing.join("\n• ")}`);
+      return;
+    }
     const originalTitle = document.title;
     const propName = (propertyName || "Property").replace(/[^a-zA-Z0-9]+/g, "_");
     const docName = activeTab === "calculator" ? "Calculator_Inputs" : "Action_Plan";
@@ -1963,7 +2029,7 @@ export default function WeeklyProspectGoalCalculator() {
           <div>
             <div className="panel">
               <div className="ph"><h2>Property &amp; Goal</h2><span className="tag">Target</span></div>
-              <Field label="Property Name" value={propertyName} set={setPropertyName} type="text" />
+              <Field label="Property Name" value={propertyName} set={setPropertyName} type="text" required />
               <div className="field">
                 <label>Occupancy Goal</label>
                 <div className="goalrow">
@@ -1972,30 +2038,30 @@ export default function WeeklyProspectGoalCalculator() {
                     onChange={(e) => setGoal(parseFloat(e.target.value))} />
                 </div>
               </div>
-              <Field label="Current Occupancy %" value={currentOccupancy} set={setCurrentOccupancy} step={0.1} min={0} max={100} />
+              <Field label="Current Occupancy %" value={currentOccupancy} set={setCurrentOccupancy} step={0.1} min={0} max={100} required />
               <div className="row2">
-                <Field label="Total Units" value={units} set={setUnits} min={1} />
-                <Field label="Current # of Office Staff" value={staffCount} set={setStaffCount} min={0} />
+                <Field label="Total Units" value={units} set={setUnits} min={1} required />
+                <Field label="Current # of Office Staff" value={staffCount} set={setStaffCount} min={0} required />
               </div>
               <div className="row2">
-                <Field label="Days to Goal" hint="how many days ahead are you planning?" value={horizon} set={setHorizon} min={1} />
-                <Field label="Lead-to-Lease" hint="avg days from first contact to move-in" value={leadToLease} set={setLeadToLease} min={0} />
+                <Field label="Days to Goal" hint="how many days ahead are you planning?" value={horizon} set={setHorizon} min={1} required />
+                <Field label="Lead-to-Lease" hint="avg days from first contact to move-in" value={leadToLease} set={setLeadToLease} min={0} required />
               </div>
-              <Field label="Today's Date" value={today} set={setToday} type="date" />
+              <Field label="Today's Date" value={today} set={setToday} type="date" required />
             </div>
 
             <div className="panel">
               <div className="ph"><h2>Move-Out Forecast</h2><span className="tag">During the Window</span></div>
               <div className="subhead" style={{ marginTop: 0, paddingTop: 0, borderTop: 0 }}>Known</div>
               <div className="row2">
-                <Field label="NTV Available" hint="notices to vacate without a future lease signed" value={notices} set={setNotices} min={0} />
-                <Field label="Under Eviction but not on NTV" hint="currently being processed" value={eviction} set={setEviction} min={0} />
+                <Field label="NTV Available" hint="notices to vacate without a future lease signed" value={notices} set={setNotices} min={0} required />
+                <Field label="Under Eviction but not on NTV" hint="currently being processed" value={eviction} set={setEviction} min={0} required />
               </div>
               <div className="subhead">Estimated</div>
-              <Field label="Skips Last 30-Days" hint="unplanned move-outs in the last 30 days" value={monthlySkips} set={setMonthlySkips} step={0.1} min={0} />
+              <Field label="Skips Last 30-Days" hint="unplanned move-outs in the last 30 days" value={monthlySkips} set={setMonthlySkips} step={0.1} min={0} required />
               <div className="row2">
-                <Field label="Remaining Expirations" hint="leases ending in this window without a renewal decision yet" value={remainingExp} set={setRemainingExp} min={0} />
-                <Field label="Avg Net Renewal %" hint="% of expiring leases that renew (excludes MTM)" value={renewalRate} set={setRenewalRate} step={0.1} min={0} max={100} />
+                <Field label="Remaining Expirations" hint="leases ending in this window without a renewal decision yet" value={remainingExp} set={setRemainingExp} min={0} required />
+                <Field label="Avg Net Renewal %" hint="% of expiring leases that renew (excludes MTM)" value={renewalRate} set={setRenewalRate} step={0.1} min={0} max={100} required />
               </div>
               <div className="derived">
                 <span>Known {f0(r.known)} + potential skips/evictions {f0(r.skipsEst)} + potential renewals vacating {f0(r.expirationLoss)}</span>
@@ -2006,8 +2072,8 @@ export default function WeeklyProspectGoalCalculator() {
             <div className="panel">
               <div className="ph"><h2>Current Availability</h2></div>
               <div className="row2">
-                <Field label="Vacant Available" hint="ready and not ready · no future lease signed" value={vacant} set={setVacant} min={0} />
-                <Field label="Leased Past Move-In Date" hint="signed lease, resident hasn't moved in yet" value={pastMoveIn} set={setPastMoveIn} min={0} />
+                <Field label="Vacant Available" hint="ready and not ready · no future lease signed" value={vacant} set={setVacant} min={0} required />
+                <Field label="Leased Past Move-In Date" hint="signed lease, resident hasn't moved in yet" value={pastMoveIn} set={setPastMoveIn} min={0} required />
               </div>
               <div className="derived">
                 <span>Functionally vacant · awaiting a lease or at risk</span>
@@ -2018,14 +2084,14 @@ export default function WeeklyProspectGoalCalculator() {
             <div className="panel">
               <div className="ph"><h2>Conversion Funnel</h2><span className="tag">Pooled, Trailing Weeks</span></div>
               <div className="row2">
-                <Field label="Prospect → Tour" hint="% of prospects who tour" value={p2t} set={setP2t} step={0.1} min={0} max={100} />
-                <Field label="Tour → Completed App" hint="% of tours that submit an app" value={t2a} set={setT2a} step={0.1} min={0} max={100} />
+                <Field label="Prospect → Tour" hint="% of prospects who tour" value={p2t} set={setP2t} step={0.1} min={0} max={100} required />
+                <Field label="Tour → Completed App" hint="% of tours that submit an app" value={t2a} set={setT2a} step={0.1} min={0} max={100} required />
               </div>
               <div className="row2">
-                <Field label="Denial Rate" hint="% of completed apps denied" value={denial} set={setDenial} step={0.1} min={0} max={100} />
-                <Field label="Cancellation Rate" hint="% of completed apps cancelled" value={cancel} set={setCancel} step={0.1} min={0} max={100} />
+                <Field label="Denial Rate" hint="% of completed apps denied" value={denial} set={setDenial} step={0.1} min={0} max={100} required />
+                <Field label="Cancellation Rate" hint="% of completed apps cancelled" value={cancel} set={setCancel} step={0.1} min={0} max={100} required />
               </div>
-              <Field label="Average New Prospects a Week" hint="avg traffic you generate now" value={curWeekly} set={setCurWeekly} min={0} />
+              <Field label="Average New Prospects a Week" hint="avg traffic you generate now" value={curWeekly} set={setCurWeekly} min={0} required />
             </div>
           </div>
 
@@ -2535,14 +2601,15 @@ export default function WeeklyProspectGoalCalculator() {
                   </span>
                   <span className="prepared-sep">·</span>
                   <span className="prepared-by">
-                    <span className="prepared-by-lab">Prepared by</span>
+                    <span className="prepared-by-lab">Prepared by<span className="req">*</span></span>
                     <input
                       id="prepared-by-input"
-                      className="prepared-by-input"
+                      className={`prepared-by-input ${!preparedBy.trim() ? "field-missing" : ""}`}
                       type="text"
                       value={preparedBy}
                       onChange={(e) => setPreparedBy(e.target.value)}
                       placeholder="Your name"
+                      required
                     />
                     <span className="prepared-by-print">{preparedBy || "—"}</span>
                   </span>
