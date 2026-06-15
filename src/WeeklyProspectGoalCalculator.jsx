@@ -990,6 +990,11 @@ const STYLE = `
     color-adjust: exact !important;
   }
 
+  /* Defensive white backgrounds — kill any inherited dark backgrounds */
+  html, body { background: #fff !important; }
+  .wpg .panel { background: #fff !important; border: 1px solid #b8c8d8 !important; overflow: visible !important; }
+  .wpg .grid, .wpg .rcol { background: transparent !important; }
+
   @page {
     size: letter;
     margin: 0.45in 0.5in 0.55in 0.5in;
@@ -1139,9 +1144,25 @@ const STYLE = `
     border-bottom: 1px solid #eef3f7;
   }
   .wpg .frow:last-of-type { border-bottom: none; }
+  /* Funnel uses .fname for label, .fval for value — print-friendly */
+  .wpg .frow .ftop {
+    display: flex !important; justify-content: space-between !important;
+    align-items: baseline !important; margin: 0 !important;
+    background: transparent !important;
+  }
+  .wpg .frow .fname {
+    color: #044160 !important; font-size: 9pt !important; font-weight: 600 !important;
+    background: transparent !important;
+  }
+  .wpg .frow .fname span {
+    color: #044160 !important; font-size: 8pt !important; font-weight: 500 !important;
+    background: transparent !important; margin-left: 0.25rem;
+  }
   .wpg .frow .flab { color: #044160 !important; font-size: 9pt !important; font-weight: 600; }
-  .wpg .frow .fval { color: #044160 !important; font-size: 10pt !important; font-weight: 700; }
+  .wpg .frow .fval { color: #044160 !important; font-size: 10pt !important; font-weight: 700; background: transparent !important; }
   .wpg .frow .frate { color: #044160 !important; font-size: 7.5pt !important; font-weight: 600; }
+  /* Hide the visual bar element — print is data-only, no proportional bars */
+  .wpg .bar, .wpg .frow .bar { display: none !important; }
   .wpg .stat {
     background: #fff !important;
     border: 1px solid #b8c8d8 !important;
