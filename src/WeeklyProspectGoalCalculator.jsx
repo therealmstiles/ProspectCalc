@@ -812,6 +812,20 @@ const STYLE = `
   grid-template-columns: 1fr auto auto auto 28px !important;
   gap: 1rem !important;
   align-items: center !important;
+  width: 100%;
+  background: transparent; border: none;
+  padding: 0.9rem 1.25rem;
+  color: #fff; font-family: inherit; cursor: pointer;
+  text-align: left; transition: background 0.15s ease;
+}
+.wpg .uc-row:hover { background: rgba(44,177,204,0.05); }
+.wpg .uc-name {
+  font-weight: 600; font-size: 0.95rem;
+}
+.wpg .uc-val {
+  color: rgba(255,255,255,0.85); font-weight: 700;
+  font-size: 0.95rem; font-variant-numeric: tabular-nums;
+  text-align: right; white-space: nowrap;
 }
 .wpg .uc-benchmark {
   color: rgba(255,255,255,0.55); font-size: 0.82rem;
@@ -823,6 +837,16 @@ const STYLE = `
 }
 .wpg .uc-status.ok { color: #2cb1cc; }
 .wpg .uc-status.miss { color: #fca5a5; }
+.wpg .uc-toggle {
+  color: #2cb1cc; font-size: 1.3rem; font-weight: 700;
+  width: 24px; height: 24px; display: flex; align-items: center;
+  justify-content: center; border: 1px solid rgba(44,177,204,0.3);
+  border-radius: 4px;
+}
+.wpg .uc-body {
+  padding: 0.5rem 1.25rem 1.1rem;
+  border-top: 1px solid rgba(44,177,204,0.15);
+}
 
 /* Print-only Plan Inputs Summary — hidden on screen */
 .wpg .rm-summary { display: none; }
@@ -870,31 +894,6 @@ const STYLE = `
 .wpg .improve-card.unchanged-card {
   padding: 0; border-left: 4px solid rgba(255,255,255,0.15);
   background: rgba(0,0,0,0.12);
-}
-.wpg .uc-row {
-  width: 100%; gap: 1rem;
-  background: transparent; border: none; padding: 0.9rem 1.25rem;
-  color: #fff; font-family: inherit; cursor: pointer;
-  text-align: left; transition: background 0.15s ease;
-}
-.wpg .uc-row:hover { background: rgba(44,177,204,0.05); }
-.wpg .uc-name {
-  font-weight: 600; font-size: 0.95rem;
-}
-.wpg .uc-val {
-  color: rgba(255,255,255,0.85); font-weight: 700;
-  font-size: 0.95rem; font-variant-numeric: tabular-nums;
-  text-align: right; white-space: nowrap;
-}
-.wpg .uc-toggle {
-  color: #2cb1cc; font-size: 1.3rem; font-weight: 700;
-  width: 24px; height: 24px; display: flex; align-items: center;
-  justify-content: center; border: 1px solid rgba(44,177,204,0.3);
-  border-radius: 4px;
-}
-.wpg .uc-body {
-  padding: 0.5rem 1.25rem 1.1rem;
-  border-top: 1px solid rgba(44,177,204,0.15);
 }
 
 /* ── Header bar (actions) ── */
@@ -1020,7 +1019,7 @@ const STYLE = `
   }
   .wpg .prop-banner-name { color: #044160 !important; font-weight: 700; }
   .wpg .prop-banner-period,
-  .wpg .prop-banner-occ { color: #044160 !important; }
+  .wpg .prop-banner-occ { color: #044160 !important; font-weight: 500; }
   .wpg .prop-banner-sep { color: #044160 !important; }
 
   /* ─── CALCULATOR TAB PRINT — Page 1: hero + funnel · Page 2: recap + how it computes ─── */
@@ -1058,10 +1057,10 @@ const STYLE = `
   }
   .wpg .hero .per {
     color: #044160 !important; font-size: 8.5pt !important;
-    margin-top: 0.15rem;
+    margin-top: 0.15rem; font-weight: 500;
   }
   .wpg .hero .dt { color: #044160 !important; font-size: 7.5pt !important; }
-  .wpg .hero .dv { color: #044160 !important; font-size: 9.5pt !important; }
+  .wpg .hero .dv { color: #044160 !important; font-size: 9.5pt !important; font-weight: 700; }
   .wpg .hero .occ-strip {
     background: #eef3f7 !important;
     border-left-color: #044160 !important;
@@ -1070,7 +1069,7 @@ const STYLE = `
   .wpg .hero .occ-strip .occ-now,
   .wpg .hero .occ-strip .occ-goal { color: #044160 !important; }
   .wpg .hero .occ-strip .occ-cap,
-  .wpg .hero .occ-strip .occ-arrow { color: #044160 !important; }
+  .wpg .hero .occ-strip .occ-arrow { color: #044160 !important; font-weight: 500; }
 
   /* Hide the verdict box and exploration content on calculator print —
      the Action Plan PDF carries the actionable verdict and lever list */
@@ -1105,9 +1104,9 @@ const STYLE = `
     border-bottom: 1px solid #eef3f7;
   }
   .wpg .frow:last-of-type { border-bottom: none; }
-  .wpg .frow .flab { color: #044160 !important; font-size: 9pt !important; }
+  .wpg .frow .flab { color: #044160 !important; font-size: 9pt !important; font-weight: 500; }
   .wpg .frow .fval { color: #044160 !important; font-size: 10pt !important; font-weight: 700; }
-  .wpg .frow .frate { color: #044160 !important; font-size: 7.5pt !important; }
+  .wpg .frow .frate { color: #044160 !important; font-size: 7.5pt !important; font-weight: 500; }
   .wpg .stat {
     background: #fff !important;
     border: 1px solid #b8c8d8 !important;
@@ -1156,7 +1155,7 @@ const STYLE = `
     font-size: 9pt !important; line-height: 1.4;
     padding: 0.08rem 0;
   }
-  .wpg .rm-row span { color: #044160 !important; }
+  .wpg .rm-row span { color: #044160 !important; font-weight: 500; }
   .wpg .rm-row b { color: #044160 !important; font-weight: 600; }
   /* KPI rows — fixed column widths so every row aligns identically */
   .wpg .rm-kpi-row {
@@ -1169,7 +1168,7 @@ const STYLE = `
   }
   .wpg .rm-kpi-row.miss .rm-kpi-status { color: #b91c1c !important; font-weight: 600; }
   .wpg .rm-kpi-row.ok .rm-kpi-status { color: #15803d !important; font-weight: 600; }
-  .wpg .rm-kpi-name { color: #044160 !important; white-space: nowrap; }
+  .wpg .rm-kpi-name { color: #044160 !important; white-space: nowrap; font-weight: 500; }
   .wpg .rm-kpi-val {
     color: #044160 !important; font-weight: 700;
     font-variant-numeric: tabular-nums; white-space: nowrap;
@@ -1177,7 +1176,7 @@ const STYLE = `
   }
   .wpg .rm-kpi-bench {
     color: #044160 !important; font-variant-numeric: tabular-nums;
-    white-space: nowrap; text-align: left;
+    white-space: nowrap; text-align: left; font-weight: 500;
   }
   .wpg .rm-kpi-status { white-space: nowrap; text-align: left; }
 
@@ -1188,11 +1187,12 @@ const STYLE = `
     border-left: 3px solid #044160 !important;
     color: #044160 !important;
     font-size: 8.5pt !important;
-    line-height: 1.45 !important;
+    line-height: 1.5 !important;
     padding: 0.55rem 0.8rem !important;
     margin: 0.5rem 0 0 !important;
     page-break-inside: avoid;
     border-radius: 4px !important;
+    font-weight: 500;
   }
   .wpg .note b { color: #044160 !important; }
   .wpg .note p { margin: 0 0 0.3rem !important; }
@@ -1271,11 +1271,11 @@ const STYLE = `
   }
   .wpg .ph-num-val small {
     color: #044160 !important; font-size: 8pt !important;
-    font-weight: 500; margin-left: 0.3rem;
+    font-weight: 600; margin-left: 0.3rem;
   }
   .wpg .ph-num-hint {
     color: #044160 !important; font-size: 7pt !important;
-    font-style: italic; margin-top: 0.15rem;
+    font-style: italic; margin-top: 0.15rem; font-weight: 500;
   }
 
   /* Feasibility verdict — plain text, no box */
@@ -1344,9 +1344,9 @@ const STYLE = `
     letter-spacing: 0.08em; margin-right: 0.18rem;
     text-transform: uppercase;
   }
-  .wpg .ic-from { color: #044160 !important; font-size: 9.5pt !important; }
+  .wpg .ic-from { color: #044160 !important; font-size: 9.5pt !important; font-weight: 500; }
   .wpg .ic-to { color: #044160 !important; font-size: 10pt !important; font-weight: 700; }
-  .wpg .ic-arrow { color: #044160 !important; }
+  .wpg .ic-arrow { color: #044160 !important; font-weight: 500; }
   .wpg .ic-delta {
     background: #eef3f7 !important; color: #044160 !important;
     font-size: 7.5pt !important; padding: 0.06rem 0.32rem !important;
@@ -1357,6 +1357,7 @@ const STYLE = `
     color: #044160 !important;
     font-size: 8.5pt !important;
     margin: 0.1rem 0 0.25rem !important;
+    font-weight: 500;
   }
   .wpg .ic-benchmark b { color: #044160 !important; }
   .wpg .ic-benchmark .ok { color: #15803d !important; font-weight: 600; }
@@ -1379,6 +1380,7 @@ const STYLE = `
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
     page-break-inside: avoid;
+    font-weight: 500;
   }
   .wpg .action-print i { color: #044160 !important; font-style: italic; }
 
@@ -1396,25 +1398,33 @@ const STYLE = `
   .wpg .uc-row {
     padding: 0 !important; background: transparent !important;
     display: grid !important;
-    grid-template-columns: 1fr 55px 110px 110px !important;
+    grid-template-columns: 1fr 55px 110px 130px !important;
+    grid-template-areas: none !important;
     gap: 0.8rem !important;
-    align-items: baseline;
+    align-items: center !important;
+    width: 100%;
   }
-  .wpg .uc-name { color: #044160 !important; font-size: 9.5pt !important; font-weight: 600; }
+  .wpg .uc-name {
+    color: #044160 !important; font-size: 9.5pt !important; font-weight: 600;
+    grid-area: auto !important;
+  }
   .wpg .uc-val {
     color: #044160 !important; font-size: 9.5pt !important;
     font-weight: 700; font-variant-numeric: tabular-nums;
     white-space: nowrap; text-align: right;
+    grid-area: auto !important;
   }
   .wpg .uc-benchmark {
-    color: #044160 !important; font-size: 8.5pt !important;
+    color: #044160 !important; font-size: 8.5pt !important; font-weight: 500;
     font-variant-numeric: tabular-nums;
     white-space: nowrap; text-align: left;
+    grid-area: auto !important;
   }
   .wpg .uc-status {
     font-size: 8.5pt !important; font-weight: 600;
     font-variant-numeric: tabular-nums;
     white-space: nowrap; text-align: left;
+    grid-area: auto !important;
   }
   .wpg .uc-status.ok { color: #15803d !important; }
   .wpg .uc-status.miss { color: #b91c1c !important; }
@@ -1432,14 +1442,14 @@ const STYLE = `
     font-size: 9pt !important;
   }
   .wpg label { color: #044160 !important; font-size: 9pt !important; }
-  .wpg .hint { color: #044160 !important; font-size: 8pt !important; }
-  .wpg .derived { color: #044160 !important; font-size: 8.5pt !important; }
+  .wpg .hint { color: #044160 !important; font-size: 8pt !important; font-weight: 500; }
+  .wpg .derived { color: #044160 !important; font-size: 8.5pt !important; font-weight: 500; }
   .wpg .derived b { color: #044160 !important; }
   .wpg .lever input[type="range"] { display: none !important; }
   .wpg .btn-reset-sliders { display: none !important; }
-  .wpg .miss .lab { color: #044160 !important; font-size: 8pt !important; }
-  .wpg .miss li { color: #044160 !important; font-size: 9pt !important; }
-  .wpg .miss li .meta { color: #044160 !important; font-size: 8pt !important; }
+  .wpg .miss .lab { color: #044160 !important; font-size: 8pt !important; font-weight: 600; }
+  .wpg .miss li { color: #044160 !important; font-size: 9pt !important; font-weight: 500; }
+  .wpg .miss li .meta { color: #044160 !important; font-size: 8pt !important; font-weight: 500; }
   .wpg .miss li .pip { background: #b91c1c !important; }
   .wpg .bar { background: #eef3f7 !important; }
   .wpg .bar > span { background: #044160 !important; }
