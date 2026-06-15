@@ -806,12 +806,13 @@ const STYLE = `
 .wpg .ic-benchmark .ok { color: #2cb1cc; }
 .wpg .ic-benchmark .miss { color: #fca5a5; }
 
-/* Unchanged row: flexbox single line — name flexes, others have min-widths */
+/* Unchanged row: 5-column grid — explicit widths, items can't wrap */
 .wpg .uc-row {
-  display: flex !important;
-  align-items: center !important;
-  flex-wrap: nowrap !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 60px 120px 130px 30px !important;
+  grid-template-rows: auto !important;
   gap: 0.85rem !important;
+  align-items: center !important;
   width: 100%;
   background: transparent; border: none;
   padding: 0.9rem 1.25rem;
@@ -820,34 +821,30 @@ const STYLE = `
 }
 .wpg .uc-row:hover { background: rgba(44,177,204,0.05); }
 .wpg .uc-name {
-  flex: 1 1 auto; min-width: 0;
   font-weight: 600; font-size: 0.95rem;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  min-width: 0;
 }
 .wpg .uc-val {
-  flex: 0 0 auto;
   color: rgba(255,255,255,0.85); font-weight: 700;
   font-size: 0.95rem; font-variant-numeric: tabular-nums;
-  text-align: right; white-space: nowrap; min-width: 55px;
+  text-align: right; white-space: nowrap;
 }
 .wpg .uc-benchmark {
-  flex: 0 0 auto;
   color: rgba(255,255,255,0.55); font-size: 0.82rem;
   font-variant-numeric: tabular-nums; white-space: nowrap;
-  min-width: 110px;
+  text-align: left;
 }
 .wpg .uc-status {
-  flex: 0 0 auto;
   font-size: 0.82rem; font-weight: 600;
   font-variant-numeric: tabular-nums; white-space: nowrap;
-  min-width: 110px;
+  text-align: left;
 }
 .wpg .uc-status.ok { color: #2cb1cc; }
 .wpg .uc-status.miss { color: #fca5a5; }
 .wpg .uc-toggle {
-  flex: 0 0 auto;
   color: #2cb1cc; font-size: 1.3rem; font-weight: 700;
-  width: 24px; height: 24px; display: flex; align-items: center;
+  width: 28px; height: 28px; display: flex; align-items: center;
   justify-content: center; border: 1px solid rgba(44,177,204,0.3);
   border-radius: 4px;
 }
@@ -1570,24 +1567,26 @@ const STYLE = `
   }
   .wpg .ic-change { flex-wrap: wrap; gap: 0.4rem; }
 
-  /* Unchanged KPI row — stay on one line at all widths (name truncates if needed) */
+  /* Unchanged KPI row — tighter grid columns on narrow screens */
   .wpg .improve-card.unchanged-card .uc-row {
-    gap: 0.5rem !important;
-    padding: 0.75rem 0.9rem !important;
-    flex-wrap: nowrap !important;
+    grid-template-columns: minmax(0, 1fr) 50px 95px 105px 26px !important;
+    gap: 0.45rem !important;
+    padding: 0.75rem 0.85rem !important;
   }
   .wpg .improve-card.unchanged-card .uc-name {
     font-size: 0.88rem !important;
-    min-width: 0 !important;
   }
   .wpg .improve-card.unchanged-card .uc-val {
-    min-width: 50px !important; font-size: 0.88rem !important;
+    font-size: 0.88rem !important;
   }
   .wpg .improve-card.unchanged-card .uc-benchmark {
-    min-width: 90px !important; font-size: 0.76rem !important;
+    font-size: 0.74rem !important;
   }
   .wpg .improve-card.unchanged-card .uc-status {
-    min-width: 100px !important; font-size: 0.76rem !important;
+    font-size: 0.74rem !important;
+  }
+  .wpg .improve-card.unchanged-card .uc-toggle {
+    width: 24px !important; height: 24px !important; font-size: 1.1rem !important;
   }
 
   /* Action items textarea */
@@ -2061,7 +2060,7 @@ export default function WeeklyProspectGoalCalculator() {
               <Field label="Skips Last 30-Days" hint="unplanned move-outs in the last 30 days" value={monthlySkips} set={setMonthlySkips} step={0.1} min={0} required />
               <div className="row2">
                 <Field label="Remaining Expirations" hint="leases ending in this window without a renewal decision yet" value={remainingExp} set={setRemainingExp} min={0} required />
-                <Field label="Avg Net Renewal %" hint="% of expiring leases that renew (excludes MTM)" value={renewalRate} set={setRenewalRate} step={0.1} min={0} max={100} required />
+                <Field label="Avg Net Renewal %" hint="The % of expiring leases that renewed (excludes MTM and Early Move-outs)" value={renewalRate} set={setRenewalRate} step={0.1} min={0} max={100} required />
               </div>
               <div className="derived">
                 <span>Known {f0(r.known)} + potential skips/evictions {f0(r.skipsEst)} + potential renewals vacating {f0(r.expirationLoss)}</span>
